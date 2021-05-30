@@ -33,6 +33,8 @@ function requestUserRepos(username){
     xhr.send();
 	
     xhr.onload = function () {
+		
+	
 		let ul = document.getElementById('userRepos');
         ul.innerHTML=" " ;
        
@@ -56,7 +58,8 @@ function requestUserRepos(username){
 			Rep.innerHTML="<b>Repository:<b>" + x;
 			
 			var anchortag = document.createElement("a")
-			anchortag.href = "#userReposFiles"
+			anchortag.href = "#headrep";
+			
 		
 			
 			var buttoncreate=document.createElement('button')
@@ -83,7 +86,10 @@ function button_id(event){
 	butid = (event.target.id);
 	console.log(butid);
 	console.log(gitHubUsername);
-	
+    var head = document.getElementById("headrep");
+    head.style.visibility="visible";	
+	var img = document.getElementById("imgarrow");
+    img.style.visibility="visible";	
 	RepoName(gitHubUsername,butid)
 }
    
@@ -91,6 +97,8 @@ function button_id(event){
         
         }
 var li= document.getElementById("main-list");
+
+
 function RepoName(username,respname){
 	const xhr = new XMLHttpRequest();
 const url = "https://api.github.com/repos/" + username  + "/" + respname + "/contents";
@@ -98,6 +106,7 @@ const url = "https://api.github.com/repos/" + username  + "/" + respname + "/con
       xhr.send();
 
     xhr.onload = function () {
+			
         let ul2 = document.getElementById('userReposFiles');
 		ul2.innerHTML="";
         var data2 = JSON.parse(this.response);
@@ -108,7 +117,7 @@ const url = "https://api.github.com/repos/" + username  + "/" + respname + "/con
         let li2 = document.createElement('li');
 		li2.classList.add('list-group-item');
 		li2.setAttribute("style"," background: linear-gradient(to bottom left, #ccffff 0%, #ffffff 57%); border: 4px solid black");
-			
+	    li2.setAttribute("id","list")
 		 li2.innerHTML = (`
 		        
                 <p><strong>File Name:</strong> ${data2[i].name} </p>
@@ -120,4 +129,6 @@ const url = "https://api.github.com/repos/" + username  + "/" + respname + "/con
     }
 }
 document.getElementById("gitHubForm").reset();
+
+			
 }
