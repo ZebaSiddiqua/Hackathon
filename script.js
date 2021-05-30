@@ -51,7 +51,7 @@ function requestUserRepos(username){
 			console.log(x)
 			
 			var Rep = document.createElement('div');
-			Rep.setAttribute("style","text-align:center ;  text-decoration : underline; font-size:23px ");
+			Rep.setAttribute("style","text-align:center ;  text-decoration : underline; font-size:150% ");
 			Rep.innerHTML="<b>Repository:<b>" + x;
 			
 			var anchortag = document.createElement("a")
@@ -118,7 +118,7 @@ const url = "https://api.github.com/repos/" + username  + "/" + respname + "/con
 		 li2.innerHTML = (`
 		        
                 <p><strong>File Name:</strong> ${data2[i].name} </p>
-				<p><strong>Url:</strong> <a href="${data2[i].html_url}">${data2[i].html_url}</a></p>
+				<p style="font-size:100%"><strong>Url:</strong> <a href="${data2[i].html_url}">${data2[i].html_url}</a></p>
             `);
 		ul2.append(li2);
 		}
