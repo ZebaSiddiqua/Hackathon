@@ -12,26 +12,23 @@ gitHubForm.addEventListener('submit', (e) => {
         ul.innerHTML=" " ;
 		let ul2 = document.getElementById('userReposFiles');
         ul2.innerHTML=" " ;
-		
+		  var head = document.getElementById("headrep");
+    head.style.visibility="hidden";	
+	var img = document.getElementById("imgarrow");
+    img.style.visibility="hidden";	
 
 	
 })
 
 let j = 0;
 function requestUserRepos(username){
-    
+  
+	
   
     const xhr = new XMLHttpRequest();
-    
-   
     const url = `https://api.github.com/users/${username}/repos`;
-   
-   
     xhr.open('GET', url, true);
-    
-  
     xhr.send();
-	
     xhr.onload = function () {
 		
 	
